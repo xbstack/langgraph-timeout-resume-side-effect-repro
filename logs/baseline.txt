@@ -1,0 +1,24 @@
+{
+  "errors": [
+    "NodeTimeoutError",
+    "NodeTimeoutError"
+  ],
+  "effect_count": 2,
+  "effects": [
+    {
+      "operation_id": "charge-001",
+      "attempt": 1
+    },
+    {
+      "operation_id": "charge-001",
+      "attempt": 2
+    }
+  ],
+  "checkpoint_values": {
+    "status": "start"
+  },
+  "checkpoint_next": [
+    "tool"
+  ],
+  "reproduced": true
+}

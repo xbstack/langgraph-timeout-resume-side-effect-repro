@@ -1,0 +1,10 @@
+{
+  "first_error": "NodeTimeoutError",
+  "attempts": 2,
+  "effect_count": 1,
+  "resumed_result": {
+    "status": "ok"
+  },
+  "checkpoint_next": [],
+  "contained": true
+}

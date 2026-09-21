@@ -1,0 +1,9 @@
+{
+  "result": {
+    "status": "tool_failed",
+    "error_kind": "NodeTimeoutError"
+  },
+  "effect_count": 1,
+  "checkpoint_next": [],
+  "structured": true
+}
