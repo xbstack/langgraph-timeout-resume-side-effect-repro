@@ -2,5 +2,7 @@
   "baseline_reproduced": true,
   "idempotent_contained": true,
   "structured_error_handler": true,
+  "provider_timeout_reproduced": true,
+  "provider_reconciliation_contained": true,
   "result": "PASS"
 }

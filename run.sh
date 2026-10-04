@@ -9,6 +9,8 @@ PYTHON="${PYTHON:-python3}"
 "$PYTHON" repro/repro.py | tee logs/baseline.txt
 "$PYTHON" fixed/idempotent_resume.py | tee logs/idempotent.txt
 "$PYTHON" fixed/structured_error_handler.py | tee logs/error-handler.txt
+"$PYTHON" repro/provider_timeout.py | tee logs/provider-timeout.txt
+"$PYTHON" fixed/provider_reconciliation.py | tee logs/provider-reconciliation.txt
 
 "$PYTHON" - <<'PY'
 import json
@@ -20,11 +22,21 @@ def last_json(path):
 baseline = last_json(root / "logs/baseline.txt")
 idempotent = last_json(root / "logs/idempotent.txt")
 handler = last_json(root / "logs/error-handler.txt")
+provider_timeout = last_json(root / "logs/provider-timeout.txt")
+provider_reconciliation = last_json(root / "logs/provider-reconciliation.txt")
 summary = {
     "baseline_reproduced": baseline["reproduced"],
     "idempotent_contained": idempotent["contained"],
     "structured_error_handler": handler["structured"],
-    "result": "PASS" if all([baseline["reproduced"], idempotent["contained"], handler["structured"]]) else "FAIL",
+    "provider_timeout_reproduced": provider_timeout["reproduced"],
+    "provider_reconciliation_contained": provider_reconciliation["contained"],
+    "result": "PASS" if all([
+        baseline["reproduced"],
+        idempotent["contained"],
+        handler["structured"],
+        provider_timeout["reproduced"],
+        provider_reconciliation["contained"],
+    ]) else "FAIL",
 }
 (root / "results/verification.json").write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
 print(json.dumps(summary, indent=2))

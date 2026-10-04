@@ -1,0 +1,7 @@
+{
+  "langgraph": "1.2.12",
+  "first_error": "TimeoutError",
+  "payments": 2,
+  "resumed_tool_result": "{\"status\": \"PAID\", \"payment\": 2}",
+  "reproduced": true
+}
